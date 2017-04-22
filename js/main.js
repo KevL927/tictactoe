@@ -9,7 +9,7 @@ function render (tttBoard) {
         j++;
       }
 
-      $('#' + j + '-' + k).html(tttBoard[j][k]);
+      $('#' + j + '-' + k).text(tttBoard[j][k]);
       k++;
       i++;
     }
@@ -19,10 +19,16 @@ $(function() {
   var gameState = TTTGame();
 
   $('td').on('click',function(e) {
-    var clickedTdId = e.target.id;
+    var clickedTd = e.target,
+        clickedTdId = clickedTd.id,
+        tdText = $(clickedTd).text();
 
     gameState.updateTttBoard(clickedTdId);
-    gameState.updateCurrPlayerTurn();
+
+    if (tdText.length === 0) {
+      gameState.updateCurrPlayerTurn();
+    }
+
     render(gameState.getTttBoard());
   });
 });
