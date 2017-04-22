@@ -9,7 +9,7 @@ function render (tttBoard) {
         j++;
       }
 
-      $('#' + j + '-' + k).html(TttBoard[j][k]);
+      $('#' + j + '-' + k).html(tttBoard[j][k]);
       k++;
       i++;
     }
@@ -23,6 +23,6 @@ $(function() {
 
     gameState.updateTttBoard(clickedTdId);
     gameState.updateCurrPlayerTurn();
-    render(gameState.tttBoard());
+    render(gameState.getTttBoard());
   });
-}
+});
