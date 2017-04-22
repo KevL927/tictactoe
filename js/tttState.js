@@ -31,6 +31,10 @@ var TTTGame = function () {
       return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'X';
   }
 
+  function getTttBoard() {
+    return tttBoard;
+  }
+
   return {
     getCurrPlayerTurn: getCurrPlayerTurn,
     updateCurrPlayerTurn: updateCurrPlayerTurn,
