@@ -18,11 +18,11 @@ var TTTGame = function () {
     var indexOfArray = location.slice(0,1),
         indexOfArrayOfArrays = location.slice(-1);
 
-    if (currPlayerTurn === 1) {
-      console.log(tttBoard);
+    if (currPlayerTurn === 1 && tttBoard[indexOfArray][indexOfArrayOfArrays] === null) {
       return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'O';
-    }
+    } else if (tttBoard[indexOfArray][indexOfArrayOfArrays] === null) {
       return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'X';
+    }
   }
 
   function getTttBoard() {
