@@ -10,12 +10,6 @@ var TTTGame = function () {
     return currPlayerTurn = 1;
   }
 
-  function resetGame() {
-    currPlayerTurn = 1,
-    tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
-    numOfWin = {playerOne: 0, playerTwo: 0};
-  }
-
   function getCurrPlayerTurn() {
     return currPlayerTurn;
   }
@@ -33,6 +27,12 @@ var TTTGame = function () {
 
   function getTttBoard() {
     return tttBoard;
+  }
+
+  function resetGame() {
+    currPlayerTurn = 1,
+    tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+    numOfWin = {playerOne: 0, playerTwo: 0};
   }
 
   return {
