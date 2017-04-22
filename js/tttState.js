@@ -1,6 +1,7 @@
 var TTTGame = function () {
   var currPlayerTurn = 1,
-      numOfWin = {playerOne: 0, playerTwo: 0}
+      tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+      numOfWin = {playerOne: 0, playerTwo: 0};
 
   function updateCurrPlayerTurn() {
     if (currPlayerTurn === 1) {
