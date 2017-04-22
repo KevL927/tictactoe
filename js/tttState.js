@@ -5,9 +5,9 @@ var TTTGame = function () {
 
   function updateCurrPlayerTurn() {
     if (currPlayerTurn === 1) {
-      return currPlayerTurn++;
+      return currPlayerTurn = 2;
     }
-    return currPlayerTurn--;
+    return currPlayerTurn = 1;
   }
 
   function resetGame() {
