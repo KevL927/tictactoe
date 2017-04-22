@@ -1,4 +1,4 @@
-function render (tttBoard) {
+function render (tttBoard, playerTurn) {
     var i = 0,
         j = 0,
         k = 0;
@@ -13,10 +13,13 @@ function render (tttBoard) {
       k++;
       i++;
     }
+    $('.player-turn').text(playerTurn);
 }
 
 $(function() {
   var gameState = TTTGame();
+
+  render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
 
   $('td').on('click',function(e) {
     var clickedTd = e.target,
@@ -29,6 +32,6 @@ $(function() {
       gameState.updateCurrPlayerTurn();
     }
 
-    render(gameState.getTttBoard());
+    render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
   });
 });
