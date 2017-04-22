@@ -20,6 +20,17 @@ var TTTGame = function () {
     return currPlayerTurn;
   }
 
+  function updateTttBoard(location) {
+    var indexOfArray = location.slice(0,1),
+        indexOfArrayOfArrays = location.slice(-1);
+
+    if (currPlayerTurn === 1) {
+      console.log(tttBoard);
+      return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'O';
+    }
+      return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'X';
+  }
+
   return {
     getCurrPlayerTurn: getCurrPlayerTurn,
     updateCurrPlayerTurn: updateCurrPlayerTurn,
