@@ -12,8 +12,8 @@ var TTTGame = function () {
 
   function resetGame() {
     currPlayerTurn = 1,
-    numOfWin.playerOne = 0,
-    numOfWin.playerTwo = 0;
+    tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+    numOfWin = {playerOne: 0, playerTwo: 0};
   }
 
   function getCurrPlayerTurn() {
