@@ -25,3 +25,11 @@ td {
 .game-title {
   padding-top: 20px;
 }
+
+.player-1:before {
+  content: "O";
+}
+
+.player-2:before {
+  content: "X";
+}
