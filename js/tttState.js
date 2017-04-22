@@ -36,8 +36,10 @@ var TTTGame = function () {
   }
 
   return {
-    getCurrPlayerTurn: getCurrPlayerTurn,
     updateCurrPlayerTurn: updateCurrPlayerTurn,
+    getCurrPlayerTurn: getCurrPlayerTurn,
+    updateTttBoard: updateTttBoard,
+    getTttBoard: getTttBoard,
     resetGame: resetGame
   }
 };
