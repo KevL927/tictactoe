@@ -53,27 +53,25 @@ function renderScore (playerScoreClassName, playerScore) {
 }
 
 function render (tttBoard, playerTurn) {
-    var i = 0,
-        j = 0,
-        k = 0;
+  var i = 0,
+      j = 0,
+      k = 0;
 
-    while(i <= 8) {
-      if(i === 3 || i === 6) {
-        k = 0;
-        j++;
-      }
-
-      $('#' + j + '-' + k).text(tttBoard[j][k]);
-      k++;
-      i++;
+  while(i <= 8) {
+    if(i === 3 || i === 6) {
+      k = 0;
+      j++;
     }
-    $('.player-turn').text(playerTurn);
+
+    $('#' + j + '-' + k).text(tttBoard[j][k]);
+    k++;
+    i++;
+  }
+  $('.player-turn').text(playerTurn);
 }
 
 $(function() {
   var gameState = TTTGame();
-
-  render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
 
   function tdClickHandler (e) {
     var clickedTd = e.target,
@@ -89,6 +87,31 @@ $(function() {
       renderScore('player-two', gameState.getNumOfWin().playerTwo);
     };
   }
+
+  function setNewAndResetGameSetting (tttBoard, currPlayerTurn) {
+    $('td').on('click', tdClickHandler);
+    $('.buttons').hide();
+    $('.player-display').text('Player turn: 1');
+    render(tttBoard, currPlayerTurn);
+  }
+
+  $('.score').on('DOMSubtreeModified',function(){
+    $('td').off();
+    $('.buttons').show();
+    $('.player-display').text(gameState.getIsWinnerStatus() + ' Won!');
+  });
+
+  $('.new-game').on('click', function(e) {
+    gameState.newGame();
+    setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
+  });
+
+  $('.reset-game').on('click', function(e) {
+    gameState.resetGame();
+    renderScore('player-one', gameState.getNumOfWin().playerOne);
+    renderScore('player-two', gameState.getNumOfWin().playerTwo);
+    setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
+  });
 
   $('td').on('click', tdClickHandler);
 });
