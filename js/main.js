@@ -8,8 +8,8 @@ function checkWinner (tttBoard, callback) {
 
   while(i <= 8) {
     if (i === 3 || i === 6) {
-      if(callback(vertical, horizontal)) {
-        return callback(vertical, horizontal);
+      if(callback (vertical) || callback (horizontal)) {
+        return callback (vertical) || callback (horizontal);
       }
       k = 0;
       j++;
@@ -24,27 +24,17 @@ function checkWinner (tttBoard, callback) {
     k++;
     i++;
   }
-
   var leftToRightDiag = tttBoard[0][0] + tttBoard[1][1] + tttBoard[2][2],
       rightToLeftDiag = tttBoard[0][2] + tttBoard[1][1] + tttBoard[2][0];
 
-  if(callback(vertical, horizontal, leftToRightDiag, rightToLeftDiag)) {
-    return callback(vertical, horizontal, leftToRightDiag, rightToLeftDiag);
-  }
   if (!isNull) return 'tie';
+
+  return callback (vertical) || callback (horizontal) || callback (leftToRightDiag) || callback (rightToLeftDiag)
 };
 
-function checkCombination (verticalCombination, horizontalCombination, leftToRightDiag, rightToLeftDiag) {
-  if (verticalCombination === 'OOO' || verticalCombination === 'XXX') {
-    return verticalCombination;
-  } else if (horizontalCombination === 'OOO' || horizontalCombination === 'XXX') {
-    return horizontalCombination;
-  }
-
-  if (leftToRightDiag === 'OOO' || leftToRightDiag === 'XXX') {
-    return leftToRightDiag;
-  } else if (rightToLeftDiag === 'OOO' || rightToLeftDiag === 'XXX') {
-    return rightToLeftDiag;
+function checkCombination (combination) {
+  if (combination === 'OOO' || combination === 'XXX') {
+    return combination;
   }
 }
 
@@ -101,12 +91,12 @@ $(function() {
     $('.player-display').text(gameState.getIsWinnerStatus() + ' Won!');
   });
 
-  $('.new-game').on('click', function(e) {
+  $('.new-game').on('click', function (e) {
     gameState.newGame();
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
   });
 
-  $('.reset-game').on('click', function(e) {
+  $('.reset-game').on('click', function (e) {
     gameState.resetGame();
     renderScore('player-one', gameState.getNumOfWin().playerOne);
     renderScore('player-two', gameState.getNumOfWin().playerTwo);
