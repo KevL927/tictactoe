@@ -90,5 +90,10 @@ $(function() {
     };
   }
 
+  $('.new-game').on('click', function(e) {
+    gameState.newGame();
+    setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
+  });
+
   $('td').on('click', tdClickHandler);
 });
