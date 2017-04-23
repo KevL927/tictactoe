@@ -42,7 +42,7 @@ function renderScore (playerScoreClassName, playerScore) {
   $('.' + playerScoreClassName).text(playerScore);
 }
 
-function render (tttBoard, playerTurn) {
+function renderBoardAndPlayerTurn (tttBoard, playerTurn) {
   var i = 0,
       j = 0,
       k = 0;
@@ -71,7 +71,7 @@ $(function() {
     gameState.updateTttBoard(clickedTdId);
     if (tdText.length === 0) gameState.updateCurrPlayerTurn();
     gameState.updateIsWinner(checkWinner(gameState.getTttBoard(), checkCombination));
-    render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
+    renderBoardAndPlayerTurn(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
     if(checkWinner(gameState.getTttBoard(), checkCombination)) {
       renderScore('player-one', gameState.getNumOfWin().playerOne);
       renderScore('player-two', gameState.getNumOfWin().playerTwo);
@@ -82,7 +82,7 @@ $(function() {
     $('td').on('click', tdClickHandler);
     $('.buttons').css('visibility', 'hidden');
     $('.player-display').text('Player turn: 1');
-    render(tttBoard, currPlayerTurn);
+    renderBoardAndPlayerTurn(tttBoard, currPlayerTurn);
   }
 
   $('.score').on('DOMSubtreeModified',function(){
