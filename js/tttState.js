@@ -46,6 +46,10 @@ var TTTGame = function () {
     return isWinner;
   }
 
+  function getNumOfWin() {
+    return numOfWin;
+  }
+
   function resetGame() {
     currPlayerTurn = 1,
     tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
