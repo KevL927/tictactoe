@@ -29,6 +29,22 @@ var TTTGame = function () {
     return tttBoard;
   }
 
+  function updateIsWinner(winnerInfo) {
+    if (winnerInfo === 'OOO') {
+      isWinner = 'Player 1';
+      numOfWin.playerOne++;
+    } else if (winnerInfo === 'XXX') {
+      isWinner = 'Player 2';
+      numOfWin.playerTwo++;
+    } else if (winnerInfo === 'tie') {
+      isWinner = 'No One';
+    }
+  }
+
+  function getIsWinnerStatus() {
+    return isWinner;
+  }
+
   function resetGame() {
     currPlayerTurn = 1,
     tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
