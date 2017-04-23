@@ -1,6 +1,7 @@
 var TTTGame = function () {
   var currPlayerTurn = 1,
       tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+      isWinner = null,
       numOfWin = {playerOne: 0, playerTwo: 0};
 
   function updateCurrPlayerTurn() {
@@ -45,9 +46,20 @@ var TTTGame = function () {
     return isWinner;
   }
 
+  function getNumOfWin() {
+    return numOfWin;
+  }
+
+  function newGame() {
+    currPlayerTurn = 1,
+    tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+    isWinner = null;
+  }
+
   function resetGame() {
     currPlayerTurn = 1,
     tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
+    isWinner = null,
     numOfWin = {playerOne: 0, playerTwo: 0};
   }
 
@@ -56,6 +68,10 @@ var TTTGame = function () {
     getCurrPlayerTurn: getCurrPlayerTurn,
     updateTttBoard: updateTttBoard,
     getTttBoard: getTttBoard,
+    updateIsWinner: updateIsWinner,
+    getIsWinnerStatus: getIsWinnerStatus,
+    getNumOfWin: getNumOfWin,
+    newGame: newGame,
     resetGame: resetGame
   }
 };
