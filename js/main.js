@@ -48,6 +48,10 @@ function compareCombinationCase (verticalCombination, horizontalCombination, lef
   }
 }
 
+function renderScore (playerScoreClassName, playerScore) {
+  $('.' + playerScoreClassName).text(playerScore);
+}
+
 function render (tttBoard, playerTurn) {
     var i = 0,
         j = 0,
