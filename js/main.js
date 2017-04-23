@@ -94,6 +94,13 @@ $(function() {
     gameState.newGame();
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
   });
+  
+  $('.reset-game').on('click', function(e) {
+    gameState.resetGame();
+    renderScore('player-one', gameState.getNumOfWin().playerOne);
+    renderScore('player-two', gameState.getNumOfWin().playerTwo);
+    setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
+  })
 
   $('td').on('click', tdClickHandler);
 });
