@@ -71,17 +71,20 @@ $(function() {
 
   render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
 
-  $('td').on('click',function(e) {
+  function tdClickHandler (e) {
     var clickedTd = e.target,
         clickedTdId = clickedTd.id,
         tdText = $(clickedTd).text();
 
     gameState.updateTttBoard(clickedTdId);
-
-    if (tdText.length === 0) {
-      gameState.updateCurrPlayerTurn();
-    }
-
+    if (tdText.length === 0) gameState.updateCurrPlayerTurn();
+    gameState.updateIsWinner(checkWinner(gameState.getTttBoard()));
     render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
-  });
+    if(checkWinner(gameState.getTttBoard())) {
+      renderScore('player-one', gameState.getNumOfWin().playerOne);
+      renderScore('player-two', gameState.getNumOfWin().playerTwo);
+    };
+  }
+
+  $('td').on('click', tdClickHandler);
 });
