@@ -67,6 +67,10 @@ var TTTGame = function () {
     getCurrPlayerTurn: getCurrPlayerTurn,
     updateTttBoard: updateTttBoard,
     getTttBoard: getTttBoard,
+    updateIsWinner: updateIsWinner,
+    getIsWinnerStatus: getIsWinnerStatus,
+    getNumOfWin: getNumOfWin,
+    newGame: newGame,
     resetGame: resetGame
   }
 };
