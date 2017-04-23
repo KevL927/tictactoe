@@ -61,20 +61,22 @@ function renderBoardAndPlayerTurn (tttBoard, playerTurn) {
 }
 
 $(function() {
-  var gameState = TTTGame();
+  const gameState = TTTGame(),
+        getNumOfWin = gameState.getNumOfWin();
 
   function tdClickHandler (e) {
     var clickedTd = e.target,
         clickedTdId = clickedTd.id,
-        tdText = $(clickedTd).text();
+        tdText = $(clickedTd).text(),
+        getTttBoard = gameState.getTttBoard();
 
     gameState.updateTttBoard(clickedTdId);
     if (tdText.length === 0) gameState.updateCurrPlayerTurn();
-    gameState.updateIsWinner(checkWinner(gameState.getTttBoard(), checkCombination));
-    renderBoardAndPlayerTurn(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
-    if(checkWinner(gameState.getTttBoard(), checkCombination)) {
-      renderScore('player-one', gameState.getNumOfWin().playerOne);
-      renderScore('player-two', gameState.getNumOfWin().playerTwo);
+    gameState.updateIsWinner(checkWinner(getTttBoard, checkCombination));
+    renderBoardAndPlayerTurn(getTttBoard, gameState.getCurrPlayerTurn());
+    if(checkWinner(getTttBoard, checkCombination)) {
+      renderScore('player-one', getNumOfWin.playerOne);
+      renderScore('player-two', getNumOfWin.playerTwo);
     };
   }
 
@@ -98,8 +100,8 @@ $(function() {
 
   $('.reset-game').on('click', function (e) {
     gameState.resetGame();
-    renderScore('player-one', gameState.getNumOfWin().playerOne);
-    renderScore('player-two', gameState.getNumOfWin().playerTwo);
+    renderScore('player-one', getNumOfWin.playerOne);
+    renderScore('player-two', getNumOfWin.playerTwo);
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
   });
 
