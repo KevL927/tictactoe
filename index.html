@@ -10,7 +10,16 @@
   <body>
     <div class="wrapper">
       <h2 class="game-title">Tic Tac Toes</h2>
-      <h4>Player turn: <span class="player-turn"></span></h4>
+      <h4 class="player-display">Player turn: <span class="player-turn">1</span></h4>
+      <div class="scoreboard">
+        <h4>Scoreboard</h4>
+        <p class="player-score">Player 1: <span class="player-one score">0</span></p>
+        <p class="player-score">Player 2: <span class="player-two score">0</span></p>
+      </div>
+      <div class="buttons">
+        <button class="new-game" type="submit">New Game</button>
+        <button class="reset-game" type="submit">Reset Score</button>
+      </div>
       <table>
         <tr>
           <td id="0-0"></td>
