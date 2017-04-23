@@ -90,11 +90,18 @@ $(function() {
     };
   }
 
+  function setNewAndResetGameSetting (tttBoard, currPlayerTurn) {
+    $('td').on('click', tdClickHandler);
+    $('.buttons').hide();
+    $('.player-display').text('Player turn: 1');
+    render(tttBoard, currPlayerTurn);
+  }
+
   $('.new-game').on('click', function(e) {
     gameState.newGame();
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
   });
-  
+
   $('.reset-game').on('click', function(e) {
     gameState.resetGame();
     renderScore('player-one', gameState.getNumOfWin().playerOne);
