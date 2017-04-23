@@ -1,4 +1,4 @@
-function checkWinner (tttBoard) {
+function checkWinner (tttBoard, callback) {
   var i = 0,
       j = 0,
       k = 0,
@@ -8,8 +8,8 @@ function checkWinner (tttBoard) {
 
   while(i <= 8) {
     if (i === 3 || i === 6) {
-      if(compareCombinationCase(vertical, horizontal)) {
-        return compareCombinationCase(vertical, horizontal);
+      if(callback(vertical, horizontal)) {
+        return callback(vertical, horizontal);
       }
       k = 0;
       j++;
@@ -28,13 +28,13 @@ function checkWinner (tttBoard) {
   var leftToRightDiag = tttBoard[0][0] + tttBoard[1][1] + tttBoard[2][2],
       rightToLeftDiag = tttBoard[0][2] + tttBoard[1][1] + tttBoard[2][0];
 
-  if(compareCombinationCase(vertical, horizontal, leftToRightDiag, rightToLeftDiag)) {
-    return compareCombinationCase(vertical, horizontal, leftToRightDiag, rightToLeftDiag);
+  if(callback(vertical, horizontal, leftToRightDiag, rightToLeftDiag)) {
+    return callback(vertical, horizontal, leftToRightDiag, rightToLeftDiag);
   }
   if (!isNull) return 'tie';
 };
 
-function compareCombinationCase (verticalCombination, horizontalCombination, leftToRightDiag, rightToLeftDiag) {
+function checkCombination (verticalCombination, horizontalCombination, leftToRightDiag, rightToLeftDiag) {
   if (verticalCombination === 'OOO' || verticalCombination === 'XXX') {
     return verticalCombination;
   } else if (horizontalCombination === 'OOO' || horizontalCombination === 'XXX') {
@@ -80,9 +80,9 @@ $(function() {
 
     gameState.updateTttBoard(clickedTdId);
     if (tdText.length === 0) gameState.updateCurrPlayerTurn();
-    gameState.updateIsWinner(checkWinner(gameState.getTttBoard()));
+    gameState.updateIsWinner(checkWinner(gameState.getTttBoard(), checkCombination));
     render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
-    if(checkWinner(gameState.getTttBoard())) {
+    if(checkWinner(gameState.getTttBoard(), checkCombination)) {
       renderScore('player-one', gameState.getNumOfWin().playerOne);
       renderScore('player-two', gameState.getNumOfWin().playerTwo);
     };
