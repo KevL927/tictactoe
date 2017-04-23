@@ -80,14 +80,14 @@ $(function() {
 
   function setNewAndResetGameSetting (tttBoard, currPlayerTurn) {
     $('td').on('click', tdClickHandler);
-    $('.buttons').hide();
+    $('.buttons').css('visibility', 'hidden');
     $('.player-display').text('Player turn: 1');
     render(tttBoard, currPlayerTurn);
   }
 
   $('.score').on('DOMSubtreeModified',function(){
     $('td').off();
-    $('.buttons').show();
+    $('.buttons').css('visibility', 'visible');
     $('.player-display').text(gameState.getIsWinnerStatus() + ' Won!');
   });
 
