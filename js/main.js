@@ -97,6 +97,12 @@ $(function() {
     render(tttBoard, currPlayerTurn);
   }
 
+  $('.score').on('DOMSubtreeModified',function(){
+    $('td').off();
+    $('.buttons').show();
+    $('.player-display').text(gameState.getIsWinnerStatus() + ' Won!');
+  });
+
   $('.new-game').on('click', function(e) {
     gameState.newGame();
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
