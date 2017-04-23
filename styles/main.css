@@ -34,3 +34,7 @@ td {
   margin-top: 40px;
   padding: 4px;
 }
+
+.player-score {
+  font-size: 14px;
+}
