@@ -53,27 +53,25 @@ function renderScore (playerScoreClassName, playerScore) {
 }
 
 function render (tttBoard, playerTurn) {
-    var i = 0,
-        j = 0,
-        k = 0;
+  var i = 0,
+      j = 0,
+      k = 0;
 
-    while(i <= 8) {
-      if(i === 3 || i === 6) {
-        k = 0;
-        j++;
-      }
-
-      $('#' + j + '-' + k).text(tttBoard[j][k]);
-      k++;
-      i++;
+  while(i <= 8) {
+    if(i === 3 || i === 6) {
+      k = 0;
+      j++;
     }
-    $('.player-turn').text(playerTurn);
+
+    $('#' + j + '-' + k).text(tttBoard[j][k]);
+    k++;
+    i++;
+  }
+  $('.player-turn').text(playerTurn);
 }
 
 $(function() {
   var gameState = TTTGame();
-
-  render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
 
   function tdClickHandler (e) {
     var clickedTd = e.target,
@@ -113,7 +111,7 @@ $(function() {
     renderScore('player-one', gameState.getNumOfWin().playerOne);
     renderScore('player-two', gameState.getNumOfWin().playerTwo);
     setNewAndResetGameSetting(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
-  })
+  });
 
   $('td').on('click', tdClickHandler);
 });
