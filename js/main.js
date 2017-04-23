@@ -71,7 +71,7 @@ $(function() {
 
   render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
 
-  $('td').on('click',function(e) {
+  function tdClickHandler (e) {
     var clickedTd = e.target,
         clickedTdId = clickedTd.id,
         tdText = $(clickedTd).text();
@@ -83,5 +83,7 @@ $(function() {
     }
 
     render(gameState.getTttBoard(), gameState.getCurrPlayerTurn());
-  });
+  }
+
+  $('td').on('click', tdClickHandler);
 });
