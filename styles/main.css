@@ -25,3 +25,12 @@ td {
 .game-title {
   padding-top: 20px;
 }
+
+.scoreboard {
+  border: 1px solid black;
+  width: 180px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  padding: 4px;
+}
