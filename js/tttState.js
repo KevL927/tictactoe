@@ -17,7 +17,7 @@ const TTTGame = () => {
 
   const updateTttBoard = location => {
     const indexOfArray = location.slice(0,1),
-        indexOfArrayOfArrays = location.slice(-1);
+          indexOfArrayOfArrays = location.slice(-1);
 
     if (currPlayerTurn === 1 && tttBoard[indexOfArray][indexOfArrayOfArrays] === null) {
       return tttBoard[indexOfArray][indexOfArrayOfArrays] = 'O';
