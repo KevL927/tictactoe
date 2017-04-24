@@ -1,5 +1,5 @@
-function checkWinner (tttBoard, callback) {
-  var i = 0,
+const checkWinner = (tttBoard, callback) => {
+  let i = 0,
       j = 0,
       k = 0,
       isNull = false,
@@ -24,7 +24,7 @@ function checkWinner (tttBoard, callback) {
     k++;
     i++;
   }
-  var leftToRightDiag = tttBoard[0][0] + tttBoard[1][1] + tttBoard[2][2],
+  let leftToRightDiag = tttBoard[0][0] + tttBoard[1][1] + tttBoard[2][2],
       rightToLeftDiag = tttBoard[0][2] + tttBoard[1][1] + tttBoard[2][0];
 
   if (!isNull) return 'tie';

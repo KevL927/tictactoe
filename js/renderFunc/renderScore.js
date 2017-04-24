@@ -1,3 +1,3 @@
-function renderScore (playerScoreClassName, playerScore) {
+const renderScore = (playerScoreClassName, playerScore) => {
   $('.' + playerScoreClassName).text(playerScore);
-}
+};
