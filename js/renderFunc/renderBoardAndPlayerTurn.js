@@ -1,5 +1,5 @@
-function renderBoardAndPlayerTurn (tttBoard, playerTurn) {
-  var i = 0,
+const renderBoardAndPlayerTurn = (tttBoard, playerTurn) => {
+  let i = 0,
       j = 0,
       k = 0;
 
@@ -14,4 +14,4 @@ function renderBoardAndPlayerTurn (tttBoard, playerTurn) {
     i++;
   }
   $('.player-turn').text(playerTurn);
-}
+};
