@@ -1,22 +1,22 @@
-var TTTGame = function () {
-  var currPlayerTurn = 1,
+const TTTGame = () => {
+  let currPlayerTurn = 1,
       tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
       isWinner = null,
       numOfWin = {playerOne: 0, playerTwo: 0};
 
-  function updateCurrPlayerTurn() {
+  const updateCurrPlayerTurn = () => {
     if (currPlayerTurn === 1) {
       return currPlayerTurn = 2;
     }
     return currPlayerTurn = 1;
   }
 
-  function getCurrPlayerTurn() {
+  const getCurrPlayerTurn = () => {
     return currPlayerTurn;
   }
 
-  function updateTttBoard(location) {
-    var indexOfArray = location.slice(0,1),
+  const updateTttBoard = location => {
+    const indexOfArray = location.slice(0,1),
         indexOfArrayOfArrays = location.slice(-1);
 
     if (currPlayerTurn === 1 && tttBoard[indexOfArray][indexOfArrayOfArrays] === null) {
@@ -26,11 +26,11 @@ var TTTGame = function () {
     }
   }
 
-  function getTttBoard() {
+  const getTttBoard = () => {
     return tttBoard;
   }
 
-  function updateIsWinner(winnerInfo) {
+  const updateIsWinner = winnerInfo => {
     if (winnerInfo === 'OOO') {
       isWinner = 'Player 1';
       numOfWin.playerOne++;
@@ -42,21 +42,21 @@ var TTTGame = function () {
     }
   }
 
-  function getIsWinnerStatus() {
+  const getIsWinnerStatus = () => {
     return isWinner;
   }
 
-  function getNumOfWin() {
+  const getNumOfWin = () => {
     return numOfWin;
   }
 
-  function newGame() {
+  const newGame = () => {
     currPlayerTurn = 1,
     tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
     isWinner = null;
   }
 
-  function resetGame() {
+  const resetGame = () => {
     currPlayerTurn = 1,
     tttBoard = [[null, null, null],[null, null, null],[null, null, null]],
     isWinner = null,
